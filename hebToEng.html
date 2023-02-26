@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>العربية للانجليزية</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+      var makor = [];
+      var makor2 = [
+        ["א", "a"],
+        ["ב", "b"],
+        ["ג", "g"],
+        ["ד", "d"],
+        ["ה", "h"],
+        ["ו", "o"],
+        ["ז", "z"],
+        ["ח", "h"],
+        ["ט", "t"],
+        ["י", "e"],
+        ["כ", "k"],
+        ["ך", "kh"],
+        ["ל", "l"],
+        ["מ", "m"],
+        ["ם", "m"],
+        ["נ", "n"],
+        ["ן", "n"],
+        ["ס", "s"],
+        ["ע", "a"],
+        ["פ", "f"],
+        ["ף", "f"],
+        ["צ", "ts"],
+        ["ץ", "ts"],
+        ["ק", "k"],
+        ["ר", "r"],
+        ["ש", "sh"],
+        ["ת", "t"],
+      ];
+      var makor3 = [];
+      function convert() {
+        var result = "";
+        var t1 = $("#TextArea1").val();
+        var temp = t1.split("\n");
+        for (var i = 0; i < temp.length; i++) {
+          var isex = false;
+          for (var j = 0; j < makor.length; j++) {
+            if (temp[i] == makor[j][0]) {
+              result += makor[j][1] + "\n";
+              isex = true;
+              break;
+            }
+          }
+          if (isex == false) {
+            result += convert2(temp[i]) + "\n";
+          }
+        }
+        $("#TextArea2").val(result);
+      }
+      function convert2(xx) {
+        var fares = xx.split(" ");
+        for (var k = 0; k < fares.length; k++) {
+          var tt = fares[k].slice(-1);
+
+          for (var m = 0; m < ends.length; m++) {
+            if (ends[m][0] == tt) {
+              var rrr = fares[k].substring(0, fares[k].length - 1);
+              rrr += ends[m][1];
+              fares[k] = rrr;
+            }
+          }
+        }
+        xx = "";
+        for (var k = 0; k < fares.length; k++) {
+          xx += fares[k] + " ";
+        }
+        for (var v = 0; v < makor3.length; v++) {
+          xx = xx.replace(makor3[v][0], makor3[v][1]);
+        }
+        var result = "";
+        for (var i = 0; i < xx.length; i++) {
+          var isex = false;
+          for (var j = 0; j < makor2.length; j++) {
+            if (xx[i] == makor2[j][0]) {
+              isex = true;
+              result += makor2[j][1];
+              break;
+            }
+          }
+          if (isex == false) {
+            result += xx[i];
+          }
+        }
+        return result;
+      }
+      function clear1() {
+        $("#TextArea1").val("");
+      }
+
+      function selectAllAndCopy() {
+        $("#TextArea2").select();
+        document.execCommand("copy");
+        $("#TextArea2").val("");
+      }
+    </script>
+  </head>
+  <body style="direction: rtl">
+    <div class="container">
+      <div class="mb-3">
+        <a href="index.html" class="homePage">
+          <p class="text-primary text-center fs-3 fw-bolder">
+            המרת רשימות נתונים בין שפות
+          </p></a
+        >
+        <a href="/hebToEng.html"
+          ><button class="btn btn-outline-dark">עברית לאנגלית</button></a
+        >
+        <a href="/arToEng.html"
+          ><button class="btn btn-outline-dark">عربية للانجليزية</button></a
+        >
+      </div>
+      <span class="fs-3">הנתונים בעברית</span>
+      <button class="btn btn-outline-danger float-start" onclick="clear1()">
+        נקה
+      </button>
+      <textarea
+        id="TextArea1"
+        class="form-control"
+        style="height: 150px"
+        oninput="convert()"
+      ></textarea>
+      <br />
+      <span class="fs-3">התוצאה באנגלית</span>
+      <button
+        class="btn btn-outline-success float-start"
+        onclick="selectAllAndCopy()"
+      >
+        העתק ללוח
+      </button>
+      <textarea
+        id="TextArea2"
+        class="form-control"
+        style="height: 150px"
+      ></textarea
+      ><br />
+      <!-- <div class="col-12">
+        <input
+          id="Button1"
+          class="btn btn-outline-primary float-end col-12"
+          type="button"
+          value="המר"
+          onclick="convert()"
+        />
+      </div> -->
+      <footer>
+        <p class="text-center">created by Fares Mulla &copy; 2023</p>
+      </footer>
+    </div>
+  </body>
+</html>

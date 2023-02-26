@@ -1,0 +1,15 @@
+.homePage{
+    cursor: pointer;
+    text-decoration: none;
+}
+
+footer{
+    background-color: #00000023;
+    
+    padding: 5px;
+    text-align: center;
+}
+
+.content{
+    min-height: 80vh;
+}
