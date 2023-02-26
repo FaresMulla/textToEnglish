@@ -17,7 +17,10 @@
     <title>العربية للانجليزية</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
-      var makor = [];
+      var makor = [
+        ["فارس", "fares"],
+        ["عليا", "alya"],
+      ];
       var makor2 = [
         ["א", "a"],
         ["ב", "b"],
@@ -47,10 +50,18 @@
         ["ש", "sh"],
         ["ת", "t"],
       ];
-      var makor3 = [];
+      var makor3 = [
+        ["", ""],
+        ["", ""],
+      ];
+
+      var ends = [
+        ["", ""],
+        ["", ""],
+      ];
       function convert() {
         var result = "";
-        var t1 = $("#TextArea1").val();
+        var t1 = $("#TextArea3").val();
         var temp = t1.split("\n");
         for (var i = 0; i < temp.length; i++) {
           var isex = false;
@@ -65,7 +76,7 @@
             result += convert2(temp[i]) + "\n";
           }
         }
-        $("#TextArea2").val(result);
+        $("#TextArea4").val(result);
       }
       function convert2(xx) {
         var fares = xx.split(" ");
@@ -104,13 +115,13 @@
         return result;
       }
       function clear1() {
-        $("#TextArea1").val("");
+        $("#TextArea3").val("");
       }
 
       function selectAllAndCopy() {
-        $("#TextArea2").select();
+        $("#TextArea4").select();
         document.execCommand("copy");
-        $("#TextArea2").val("");
+        $("#TextArea4").val("");
       }
     </script>
   </head>
@@ -134,7 +145,7 @@
         נקה
       </button>
       <textarea
-        id="TextArea1"
+        id="TextArea3"
         class="form-control"
         style="height: 150px"
         oninput="convert()"
@@ -148,7 +159,7 @@
         העתק ללוח
       </button>
       <textarea
-        id="TextArea2"
+        id="TextArea4"
         class="form-control"
         style="height: 150px"
       ></textarea
